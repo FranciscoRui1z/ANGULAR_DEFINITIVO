@@ -1,0 +1,85 @@
+{
+  "empresas": [
+    {
+      "id": 1,
+      "nombre": "TechCorp Canada Inc.",
+      "ciudad": "Toronto",
+      "pais": "Canadá",
+      "provincia": "Ontario",
+      "codigoPostal": "M5V 3A8",
+      "direccion": "100 King St W",
+      "latitud": 43.6426,
+      "longitud": -79.3871,
+      "empleadosTotal": 150,
+      "fechaFundacion": "2015-01-15",
+      "descripcion": "Empresa de tecnología ubicada en el corazón de Toronto"
+    }
+  ],
+  "empleados": [
+    {
+      "id": 1,
+      "nombre": "Juan",
+      "apellido": "García",
+      "email": "juan.garcia@techcorp.ca",
+      "telefono": "+1-416-555-0101",
+      "departamento": "Desarrollo",
+      "puesto": "Senior Developer",
+      "salario": 95000,
+      "fechaContratacion": "2020-03-10",
+      "estado": "activo",
+      "empresaId": 1
+    },
+    {
+      "id": 2,
+      "nombre": "María",
+      "apellido": "López",
+      "email": "maria.lopez@techcorp.ca",
+      "telefono": "+1-416-555-0102",
+      "departamento": "Recursos Humanos",
+      "puesto": "HR Manager",
+      "salario": 75000,
+      "fechaContratacion": "2019-06-15",
+      "estado": "activo",
+      "empresaId": 1
+    },
+    {
+      "id": 3,
+      "nombre": "Carlos",
+      "apellido": "Rodríguez",
+      "email": "carlos.rodriguez@techcorp.ca",
+      "telefono": "+1-416-555-0103",
+      "departamento": "Desarrollo",
+      "puesto": "Frontend Developer",
+      "salario": 85000,
+      "fechaContratacion": "2021-01-20",
+      "estado": "activo",
+      "empresaId": 1
+    },
+    {
+      "id": 4,
+      "nombre": "Ana",
+      "apellido": "Martínez",
+      "email": "ana.martinez@techcorp.ca",
+      "telefono": "+1-416-555-0104",
+      "departamento": "Ventas",
+      "puesto": "Sales Executive",
+      "salario": 70000,
+      "fechaContratacion": "2020-09-05",
+      "estado": "activo",
+      "empresaId": 1
+    },
+    {
+      "id": 5,
+      "nombre": "Luis",
+      "apellido": "Hernández",
+      "email": "luis.hernandez@techcorp.ca",
+      "telefono": "+1-416-555-0105",
+      "departamento": "Finanzas",
+      "puesto": "Financial Analyst",
+      "salario": 72000,
+      "fechaContratacion": "2019-11-10",
+      "estado": "activo",
+      "empresaId": 1
+    }
+  ]
+}
