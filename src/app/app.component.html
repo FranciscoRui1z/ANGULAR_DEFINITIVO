@@ -1,0 +1,9 @@
+<app-navbar (toggleSidebar)="toggleSidebar()"></app-navbar>
+
+<div class="app-layout">
+  <app-sidebar [isOpen]="sidebarOpen"></app-sidebar>
+  
+  <main class="main-content" [style.marginLeft]="sidebarOpen && !isMobile ? '280px' : '0'">
+    <router-outlet></router-outlet>
+  </main>
+</div>

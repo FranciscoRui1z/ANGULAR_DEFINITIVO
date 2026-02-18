@@ -1,0 +1,297 @@
+.mapa-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 30px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 15px;
+}
+
+.header h2 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 28px;
+}
+
+.empresa-info {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.mapa-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Controles */
+.controles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pais-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pais-selector label {
+  font-weight: 600;
+  color: #333;
+}
+
+.form-control {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.info-pais {
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.info-pais p {
+  margin: 0;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Mapa */
+.mapa-wrapper {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  height: 500px;
+}
+
+.mapa {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Popup del mapa */
+.popup-content {
+  font-size: 13px;
+}
+
+.popup-content h4 {
+  margin: 0 0 10px 0;
+  color: #007bff;
+}
+
+.popup-content p {
+  margin: 5px 0;
+}
+
+/* Ubicaciones */
+.ubicaciones-section {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ubicaciones-section h3 {
+  margin: 0 0 20px 0;
+  color: #333;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px;
+}
+
+.ubicaciones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.ubicacion-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.ubicacion-card:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.ubicacion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.ubicacion-header h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.badge-activa {
+  display: inline-block;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-inactiva {
+  display: inline-block;
+  padding: 4px 8px;
+  background: rgba(255, 0, 0, 0.3);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ubicacion-info {
+  padding: 15px;
+}
+
+.ubicacion-info p {
+  margin: 10px 0;
+  color: #333;
+  font-size: 14px;
+}
+
+.tipo-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.tipo-oficina {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.tipo-almacen {
+  background: #e2e3e5;
+  color: #383d41;
+}
+
+.tipo-centro-distribucion {
+  background: #d4edda;
+  color: #155724;
+}
+
+code {
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+}
+
+.no-ubicaciones {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+}
+
+/* Leyenda */
+.leyenda-section {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.leyenda-section h3 {
+  margin: 0 0 20px 0;
+  color: #333;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px;
+}
+
+.leyenda-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.leyenda-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.leyenda-icon {
+  font-size: 24px;
+}
+
+.alert {
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.alert-danger {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: #007bff;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .controles {
+    grid-template-columns: 1fr;
+  }
+
+  .mapa-wrapper {
+    height: 300px;
+  }
+
+  .ubicaciones-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .leyenda-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header h2 {
+    font-size: 22px;
+  }
+}

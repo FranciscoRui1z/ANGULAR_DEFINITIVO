@@ -12,7 +12,21 @@
       "longitud": -79.3871,
       "empleadosTotal": 150,
       "fechaFundacion": "2015-01-15",
-      "descripcion": "Empresa de tecnología ubicada en el corazón de Toronto"
+      "descripcion": "Empresa de tecnología ubicada en el corazón de Toronto, Canadá. Especializada en desarrollo de software y soluciones empresariales innovadoras."
+    },
+    {
+      "id": 2,
+      "nombre": "InnovaLabs Mexico S.A.",
+      "ciudad": "Ciudad de México",
+      "pais": "México",
+      "provincia": "Ciudad de México",
+      "codigoPostal": "06500",
+      "direccion": "Paseo de la Reforma 505",
+      "latitud": 19.4326,
+      "longitud": -99.1332,
+      "empleadosTotal": 85,
+      "fechaFundacion": "2018-03-20",
+      "descripcion": "Empresa innovadora especializada en soluciones de inteligencia artificial y consultoría empresarial en Mexico."
     }
   ],
   "empleados": [
@@ -80,6 +94,110 @@
       "fechaContratacion": "2019-11-10",
       "estado": "activo",
       "empresaId": 1
+    },
+    {
+      "id": 6,
+      "nombre": "Sofia",
+      "apellido": "Pérez",
+      "email": "sofia.perez@techcorp.ca",
+      "telefono": "+1-416-555-0106",
+      "departamento": "Marketing",
+      "puesto": "Marketing Manager",
+      "salario": 68000,
+      "fechaContratacion": "2021-05-12",
+      "estado": "activo",
+      "empresaId": 1
+    },
+    {
+      "id": 7,
+      "nombre": "Diego",
+      "apellido": "Torres",
+      "email": "diego.torres@techcorp.ca",
+      "telefono": "+1-416-555-0107",
+      "departamento": "Operaciones",
+      "puesto": "Operations Manager",
+      "salario": 73000,
+      "fechaContratacion": "2019-08-22",
+      "estado": "activo",
+      "empresaId": 1
+    },
+    {
+      "id": 8,
+      "nombre": "Laura",
+      "apellido": "Gómez",
+      "email": "laura.gomez@techcorp.ca",
+      "telefono": "+1-416-555-0108",
+      "departamento": "Desarrollo",
+      "puesto": "Backend Developer",
+      "salario": 88000,
+      "fechaContratacion": "2020-11-15",
+      "estado": "activo",
+      "empresaId": 1
+    },
+    {
+      "id": 9,
+      "nombre": "Pepe",
+      "apellido": "Gutierrez",
+      "email": "pepe@pepe.com",
+      "telefono": "",
+      "departamento": "Desarrollo",
+      "puesto": "Administrador De Sistemas",
+      "salario": 10000,
+      "fechaContratacion": "2026-02-18",
+      "estado": "activo",
+      "empresaId": 1
+    },
+    {
+      "id": 10,
+      "nombre": "Miguel",
+      "apellido": "Sánchez",
+      "email": "miguel.sanchez@innovalabs.mx",
+      "telefono": "+52-55-1234-5601",
+      "departamento": "Desarrollo",
+      "puesto": "Lead Developer",
+      "salario": 92000,
+      "fechaContratacion": "2021-02-10",
+      "estado": "activo",
+      "empresaId": 2
+    },
+    {
+      "id": 11,
+      "nombre": "Elena",
+      "apellido": "Castillo",
+      "email": "elena.castillo@innovalabs.mx",
+      "telefono": "+52-55-1234-5602",
+      "departamento": "Inteligencia Artificial",
+      "puesto": "AI Researcher",
+      "salario": 105000,
+      "fechaContratacion": "2019-09-15",
+      "estado": "activo",
+      "empresaId": 2
+    },
+    {
+      "id": 12,
+      "nombre": "Roberto",
+      "apellido": "Vargas",
+      "email": "roberto.vargas@innovalabs.mx",
+      "telefono": "+52-55-1234-5603",
+      "departamento": "Ventas",
+      "puesto": "Business Development Manager",
+      "salario": 78000,
+      "fechaContratacion": "2022-01-12",
+      "estado": "activo",
+      "empresaId": 2
+    },
+    {
+      "id": 13,
+      "nombre": "Valentina",
+      "apellido": "Mendoza",
+      "email": "valentina.mendoza@innovalabs.mx",
+      "telefono": "+52-55-1234-5604",
+      "departamento": "Recursos Humanos",
+      "puesto": "HR Specialist",
+      "salario": 65000,
+      "fechaContratacion": "2020-07-08",
+      "estado": "activo",
+      "empresaId": 2
     }
   ]
 }

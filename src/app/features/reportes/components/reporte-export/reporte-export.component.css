@@ -1,0 +1,282 @@
+.reporte-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 30px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 15px;
+}
+
+.header h2 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 28px;
+}
+
+.empresa-info {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.reporte-content {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* Panel de configuración */
+.configuracion-panel,
+.estadisticas-panel {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.configuracion-panel h3,
+.estadisticas-panel h3,
+.preview-panel h3 {
+  margin: 0 0 20px 0;
+  color: #333;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px;
+}
+
+h4 {
+  margin: 20px 0 15px 0;
+  color: #333;
+  font-size: 16px;
+}
+
+h4:first-child {
+  margin-top: 0;
+}
+
+/* Filtros */
+.filtros-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.filtro-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filtro-group label {
+  font-weight: 600;
+  color: #333;
+  font-size: 13px;
+}
+
+.form-control {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Opciones */
+.opciones-section {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.opcion-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.radio-label:hover {
+  background: #f5f5f5;
+}
+
+.radio-label input[type="radio"] {
+  cursor: pointer;
+}
+
+.radio-text {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Botones */
+.btn {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+  font-size: 13px;
+  padding: 8px;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-exportar {
+  margin-top: 20px;
+}
+
+/* Estadísticas */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.stat-item {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 15px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin-bottom: 5px;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* Desglose */
+.desglose-section {
+  margin-top: 20px;
+}
+
+.desglose-section h4 {
+  margin-top: 0;
+}
+
+.estado-items {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.estado-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.estado-item.activo {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.estado-item.inactivo {
+  background: linear-gradient(135deg, #f8476c 0%, #ff6b6b 100%);
+}
+
+.estado-item.licencia {
+  background: linear-gradient(135deg, #ffa502 0%, #ffb84d 100%);
+}
+
+.departamento-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.departamento-item {
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.dept-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+}
+
+.dept-name {
+  flex: 1;
+}
+
+.dept-count {
+  color: #007bff;
+}
+
+.dept-bar {
+  width: 100%;
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 5 }

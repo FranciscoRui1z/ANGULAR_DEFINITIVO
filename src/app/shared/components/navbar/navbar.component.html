@@ -1,0 +1,40 @@
+<nav class="navbar">
+  <div class="navbar-content">
+    <div class="navbar-left">
+      <button class="toggle-btn" (click)="onToggleSidebar()" title="Alternar menú">
+        ☰
+      </button>
+      <div class="navbar-brand">
+        <h1>🚀 ANGULAR_DEFINITIVO</h1>
+      </div>
+    </div>
+
+    <div class="navbar-right">
+      <div class="nav-links">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          🏠 Inicio
+        </a>
+        <a routerLink="/empleados" routerLinkActive="active">
+          👥 Empleados
+        </a>
+        <a routerLink="/empresa" routerLinkActive="active">
+          🏢 Empresa
+        </a>
+        <a routerLink="/estadisticas" routerLinkActive="active">
+          📊 Estadísticas
+        </a>
+        <a routerLink="/mapa" routerLinkActive="active">
+          🗺️ Mapa
+        </a>
+        <a routerLink="/reportes" routerLinkActive="active">
+          📄 Reportes
+        </a>
+      </div>
+
+      <div class="navbar-user">
+        <div class="user-icon">👤</div>
+        <span>Francisco R. L.</span>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,213 @@
+<div class="empresa-container">
+  <div class="header">
+    <h2>🏢 Detalle de la Empresa</h2>
+    <button 
+      *ngIf="!editando" 
+      class="btn btn-primary"
+      (click)="editarEmpresa()"
+    >
+      ✏️ Editar Empresa
+    </button>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div *ngIf="loading" class="loading">
+    <p>Cargando...</p>
+  </div>
+
+  <div *ngIf="empresa && !loading" class="content">
+    <!-- Información de la empresa -->
+    <div class="info-section">
+      <h3>Información General</h3>
+      
+      <div class="form-row" *ngIf="!editando">
+        <div class="info-group">
+          <label>Nombre</label>
+          <p>{{ empresa.nombre }}</p>
+        </div>
+        <div class="info-group">
+          <label>País</label>
+          <p>{{ empresa.pais }}</p>
+        </div>
+      </div>
+
+      <div class="form-row" *ngIf="!editando">
+        <div class="info-group">
+          <label>Ciudad</label>
+          <p>{{ empresa.ciudad }}</p>
+        </div>
+        <div class="info-group">
+          <label>Provincia</label>
+          <p>{{ empresa.provincia }}</p>
+        </div>
+      </div>
+
+      <div class="form-row" *ngIf="!editando">
+        <div class="info-group">
+          <label>Código Postal</label>
+          <p>{{ empresa.codigoPostal }}</p>
+        </div>
+        <div class="info-group">
+          <label>Dirección</label>
+          <p>{{ empresa.direccion }}</p>
+        </div>
+      </div>
+
+      <div class="form-row" *ngIf="!editando">
+        <div class="info-group">
+          <label>Fecha de Fundación</label>
+          <p>{{ empresa.fechaFundacion | date:'dd/MM/yyyy' }}</p>
+        </div>
+        <div class="info-group">
+          <label>Total de Empleados</label>
+          <p class="highlight">{{ empresa.empleadosTotal }}</p>
+        </div>
+      </div>
+
+      <div class="form-row full" *ngIf="!editando">
+        <div class="info-group">
+          <label>Descripción</label>
+          <p>{{ empresa.descripcion }}</p>
+        </div>
+      </div>
+
+      <!-- Formulario de edición -->
+      <form *ngIf="editando" class="edit-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input 
+              type="text" 
+              [(ngModel)]="empresa.nombre"
+              name="nombre"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label>País</label>
+            <input 
+              type="text" 
+              [(ngModel)]="empresa.pais"
+              name="pais"
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ciudad</label>
+            <input 
+              type="text" 
+              [(ngModel)]="empresa.ciudad"
+              name="ciudad"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label>Provincia</label>
+            <input 
+              type="text" 
+              [(ngModel)]="empresa.provincia"
+              name="provincia"
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Código Postal</label>
+            <input 
+              type="text" 
+              [(ngModel)]="empresa.codigoPostal"
+              name="codigoPostal"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label>Dirección</label>
+            <input 
+              type="text" 
+              [(ngModel)]="empresa.direccion"
+              name="direccion"
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <div class="form-row full">
+          <div class="form-group">
+            <label>Descripción</label>
+            <textarea 
+              [(ngModel)]="empresa.descripcion"
+              name="descripcion"
+              class="form-control"
+              rows="4"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="form-acciones">
+          <button type="button" class="btn btn-primary" (click)="guardarCambios()">
+            💾 Guardar Cambios
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="cancelarEdicion()">
+            ❌ Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Estadísticas -->
+    <div class="estadisticas-section" *ngIf="obtenerEstadisticas()">
+      <h3>📊 Estadísticas de Empleados</h3>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total de Empleados</div>
+          <div class="stat-value">{{ obtenerEstadisticas()!.totalEmpleados }}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Salario Promedio</div>
+          <div class="stat-value">${{ obtenerEstadisticas()!.salarioPromedio | number }}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Salario Máximo</div>
+          <div class="stat-value">${{ obtenerEstadisticas()!.salarioMax | number }}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Salario Mínimo</div>
+          <div class="stat-value">${{ obtenerEstadisticas()!.salarioMin | number }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabla de empleados -->
+    <div class="empleados-section" *ngIf="empleados.length > 0">
+      <h3>👥 Empleados de la Empresa</h3>
+      <div class="tabla-container">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Departamento</th>
+              <th>Puesto</th>
+              <th>Salario</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let emp of empleados">
+              <td>{{ emp.nombre }} {{ emp.apellido }}</td>
+              <td>{{ emp.email }}</td>
+              <td><span class="badge">{{ emp.departamento }}</span></td>
+              <td>{{ emp.puesto }}</td>
+              <td>${{ emp.salario | number }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

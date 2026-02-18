@@ -1,0 +1,154 @@
+<div class="form-container">
+  <div class="form-header">
+    <h2>{{ isEditando ? '✏️ Editar Empleado' : '➕ Nuevo Empleado' }}</h2>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div *ngIf="loading" class="loading">
+    <p>Cargando...</p>
+  </div>
+
+  <form *ngIf="!loading" (ngSubmit)="guardar()" class="form">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="nombre">Nombre *</label>
+        <input 
+          type="text" 
+          id="nombre"
+          [(ngModel)]="empleado.nombre"
+          name="nombre"
+          class="form-control"
+          placeholder="Nombre del empleado"
+        />
+      </div>
+      <div class="form-group">
+        <label for="apellido">Apellido *</label>
+        <input 
+          type="text" 
+          id="apellido"
+          [(ngModel)]="empleado.apellido"
+          name="apellido"
+          class="form-control"
+          placeholder="Apellido del empleado"
+        />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input 
+          type="email" 
+          id="email"
+          [(ngModel)]="empleado.email"
+          name="email"
+          class="form-control"
+          placeholder="correo@ejemplo.com"
+        />
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input 
+          type="tel" 
+          id="telefono"
+          [(ngModel)]="empleado.telefono"
+          name="telefono"
+          class="form-control"
+          placeholder="+1-416-555-0000"
+        />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="departamento">Departamento *</label>
+        <select 
+          id="departamento"
+          [(ngModel)]="empleado.departamento"
+          name="departamento"
+          class="form-control"
+        >
+          <option value="">Seleccionar departamento</option>
+          <option *ngFor="let dept of departamentos" [value]="dept">
+            {{ dept }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="puesto">Puesto *</label>
+        <input 
+          type="text" 
+          id="puesto"
+          [(ngModel)]="empleado.puesto"
+          name="puesto"
+          class="form-control"
+          placeholder="Ej: Senior Developer"
+        />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="salario">Salario *</label>
+        <input 
+          type="number" 
+          id="salario"
+          [(ngModel)]="empleado.salario"
+          name="salario"
+          class="form-control"
+          placeholder="0"
+          min="0"
+        />
+      </div>
+      <div class="form-group">
+        <label for="estado">Estado</label>
+        <select 
+          id="estado"
+          [(ngModel)]="empleado.estado"
+          name="estado"
+          class="form-control"
+        >
+          <option *ngFor="let est of estados" [value]="est">
+            {{ est }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="fechaContratacion">Fecha de Contratación</label>
+        <input 
+          type="date" 
+          id="fechaContratacion"
+          [(ngModel)]="empleado.fechaContratacion"
+          name="fechaContratacion"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <label for="empresa">Empresa</label>
+        <select 
+          id="empresa"
+          [(ngModel)]="empleado.empresaId"
+          name="empresaId"
+          class="form-control"
+        >
+          <option *ngFor="let empresa of empresas" [value]="empresa.id">
+            {{ empresa.nombre }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-acciones">
+      <button type="submit" class="btn btn-primary">
+        {{ isEditando ? '💾 Actualizar' : '➕ Crear' }} Empleado
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="cancelar()">
+        ❌ Cancelar
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,92 @@
+<div class="empleado-container">
+  <div class="header">
+    <h2>📋 Gestión de Empleados</h2>
+    <button class="btn btn-primary" (click)="nuevoEmpleado()">
+      ➕ Agregar Empleado
+    </button>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div *ngIf="loading" class="loading">
+    <p>Cargando empleados...</p>
+  </div>
+
+  <div *ngIf="!loading" class="filtros-section">
+    <div class="filtro-group">
+      <input 
+        type="text" 
+        placeholder="Buscar por nombre..." 
+        [(ngModel)]="filtro"
+        (ngModelChange)="aplicarFiltros()"
+        class="form-control"
+      />
+      
+      <select 
+        [(ngModel)]="departamentoFiltro"
+        (ngModelChange)="aplicarFiltros()"
+        class="form-control"
+      >
+        <option value="">Todos los departamentos</option>
+        <option *ngFor="let dept of departamentos" [value]="dept">
+          {{ dept }}
+        </option>
+      </select>
+
+      <button class="btn btn-secondary" (click)="limpiarFiltros()">
+        🔄 Limpiar Filtros
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && empleadosFiltrados.length > 0" class="tabla-container">
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Departamento</th>
+          <th>Puesto</th>
+          <th>Salario</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let empleado of empleadosFiltrados" [ngClass]="'estado-' + empleado.estado">
+          <td>{{ empleado.nombre }} {{ empleado.apellido }}</td>
+          <td>{{ empleado.email }}</td>
+          <td><span class="badge">{{ empleado.departamento }}</span></td>
+          <td>{{ empleado.puesto }}</td>
+          <td>${{ empleado.salario | number }}</td>
+          <td>
+            <span [ngClass]="'estado-badge estado-' + empleado.estado">
+              {{ empleado.estado }}
+            </span>
+          </td>
+          <td class="acciones">
+            <button 
+              class="btn btn-sm btn-info"
+              (click)="editarEmpleado(empleado.id)"
+              title="Editar"
+            >
+              ✏️
+            </button>
+            <button 
+              class="btn btn-sm btn-danger"
+              (click)="eliminarEmpleado(empleado.id)"
+              title="Eliminar"
+            >
+              🗑️
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="total">Total: {{ empleadosFiltrados.length }} empleados</p>
+  </div>
+
+  <div *ngIf="!loading && empleadosFiltrados.length === 0" class="alert alert-info">
+    <p>No se encontraron empleados con los filtros aplicados</p>
+  </div>
+</div>

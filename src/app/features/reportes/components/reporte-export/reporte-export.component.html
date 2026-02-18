@@ -1,0 +1,204 @@
+<div class="reporte-container">
+  <div class="header">
+    <h2>📄 Generador de Reportes</h2>
+    <p *ngIf="empresa" class="empresa-info">{{ empresa.nombre }}</p>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  <div *ngIf="success" class="alert alert-success">{{ success }}</div>
+
+  <div *ngIf="loading" class="loading">
+    <p>Generando reporte...</p>
+  </div>
+
+  <div *ngIf="!loading" class="reporte-content">
+    <!-- Panel de configuración -->
+    <div class="configuracion-panel">
+      <h3>⚙️ Configuración del Reporte</h3>
+
+      <!-- Filtros -->
+      <div class="filtros-section">
+        <h4>Filtros</h4>
+        
+        <div class="filtro-group">
+          <label for="departamento">Departamento</label>
+          <select 
+            id="departamento"
+            [(ngModel)]="departamentoFiltro"
+            (ngModelChange)="aplicarFiltros()"
+            class="form-control"
+          >
+            <option value="">Todos los departamentos</option>
+            <option *ngFor="let dept of departamentos" [value]="dept">
+              {{ dept }}
+            </option>
+          </select>
+        </div>
+
+        <div class="filtro-group">
+          <label for="estado">Estado</label>
+          <select 
+            id="estado"
+            [(ngModel)]="estadoFiltro"
+            (ngModelChange)="aplicarFiltros()"
+            class="form-control"
+          >
+            <option value="">Todos los estados</option>
+            <option *ngFor="let est of estados" [value]="est">
+              {{ est }}
+            </option>
+          </select>
+        </div>
+
+        <button class="btn btn-secondary" (click)="limpiarFiltros()">
+          🔄 Limpiar Filtros
+        </button>
+      </div>
+
+      <!-- Opciones de exportación -->
+      <div class="opciones-section">
+        <h4>Opciones de Exportación</h4>
+
+        <div class="opcion-group">
+          <label for="formato">Formato</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input 
+                type="radio" 
+                [(ngModel)]="formato" 
+                value="pdf"
+                name="formato"
+              />
+              <span class="radio-text">📄 PDF</span>
+            </label>
+            <label class="radio-label">
+              <input 
+                type="radio" 
+                [(ngModel)]="formato" 
+                value="excel"
+                name="formato"
+              />
+              <span class="radio-text">📊 Excel</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón de exportación -->
+      <button 
+        class="btn btn-primary btn-exportar"
+        (click)="exportarReporte()"
+        [disabled]="empleadosFiltrados.length === 0"
+      >
+        ⬇️ Exportar a {{ formato.toUpperCase() }}
+      </button>
+    </div>
+
+    <!-- Estadísticas -->
+    <div class="estadisticas-panel">
+      <h3>📊 Estadísticas de la Selección</h3>
+
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-label">Total de Empleados</div>
+          <div class="stat-value">{{ obtenerCantidadEmpleados() }}</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Salario Promedio</div>
+          <div class="stat-value">${{ estadisticas?.salarioPromedio | number }}</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Salario Máximo</div>
+          <div class="stat-value">${{ estadisticas?.salarioMax | number }}</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Salario Mínimo</div>
+          <div class="stat-value">${{ estadisticas?.salarioMin | number }}</div>
+        </div>
+      </div>
+
+      <!-- Desglose por estado -->
+      <div class="desglose-section">
+        <h4>Desglose por Estado</h4>
+        <div class="estado-items">
+          <div class="estado-item activo">
+            <span>Activos</span>
+            <strong>{{ obtenerEmpleadosPorEstado('activo') }}</strong>
+          </div>
+          <div class="estado-item inactivo">
+            <span>Inactivos</span>
+            <strong>{{ obtenerEmpleadosPorEstado('inactivo') }}</strong>
+          </div>
+          <div class="estado-item licencia">
+            <span>En Licencia</span>
+            <strong>{{ obtenerEmpleadosPorEstado('licencia') }}</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desglose por departamento -->
+      <div class="desglose-section" *ngIf="estadisticas?.departamentos">
+        <h4>Desglose por Departamento</h4>
+        <div class="departamento-items">
+          <div 
+            *ngFor="let dept of departamentos" 
+            class="departamento-item"
+          >
+            <div class="dept-header">
+              <span class="dept-name">{{ dept }}</span>
+              <span class="dept-count">{{ obtenerEmpleadosPorDepartamento(dept) }}</span>
+            </div>
+            <div class="dept-bar">
+              <div 
+                class="dept-fill"
+                [style.width.%]="(obtenerEmpleadosPorDepartamento(dept) / obtenerCantidadEmpleados()) * 100"
+              ></div>
+            </div>
+            <div class="dept-percentage">
+              {{ ((obtenerEmpleadosPorDepartamento(dept) / obtenerCantidadEmpleados()) * 100).toFixed(1) }}%
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vista previa de datos -->
+    <div class="preview-panel" *ngIf="empleadosFiltrados.length > 0">
+      <h3>👁️ Vista Previa de Datos a Exportar</h3>
+
+      <div class="tabla-container">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Departamento</th>
+              <th>Puesto</th>
+              <th>Salario</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let emp of empleadosFiltrados">
+              <td>{{ emp.nombre }} {{ emp.apellido }}</td>
+              <td>{{ emp.email }}</td>
+              <td><span class="badge">{{ emp.departamento }}</span></td>
+              <td>{{ emp.puesto }}</td>
+              <td>${{ emp.salario | number }}</td>
+              <td>
+                <span [ngClass]="'estado-badge estado-' + emp.estado">
+                  {{ emp.estado }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Sin datos -->
+    <div *ngIf="empleadosFiltrados.length === 0" class="alert alert-info">
+      <p>No hay datos que cumplan con los filtros seleccionados</p>
+    </div>
+  </div>
+</div>

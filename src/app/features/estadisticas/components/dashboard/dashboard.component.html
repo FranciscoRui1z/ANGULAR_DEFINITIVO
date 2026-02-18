@@ -1,0 +1,123 @@
+<div class="dashboard-container">
+  <div class="header">
+    <h2>📊 Dashboard de Estadísticas</h2>
+    <p *ngIf="empresa" class="empresa-info">{{ empresa.nombre }} - {{ empresa.ciudad }}, {{ empresa.pais }}</p>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div *ngIf="loading" class="loading">
+    <p>Cargando estadísticas...</p>
+  </div>
+
+  <div *ngIf="!loading && empleados.length > 0" class="dashboard-content">
+    <!-- Tarjetas de estadísticas principales -->
+    <div class="stats-cards">
+      <div class="stat-card card-blue">
+        <div class="stat-icon">👥</div>
+        <div class="stat-info">
+          <div class="stat-label">Total de Empleados</div>
+          <div class="stat-value">{{ totalEmpleados }}</div>
+        </div>
+      </div>
+
+      <div class="stat-card card-green">
+        <div class="stat-icon">💰</div>
+        <div class="stat-info">
+          <div class="stat-label">Salario Promedio</div>
+          <div class="stat-value">${{ salarioPromedio | number }}</div>
+        </div>
+      </div>
+
+      <div class="stat-card card-purple">
+        <div class="stat-icon">📈</div>
+        <div class="stat-info">
+          <div class="stat-label">Salario Máximo</div>
+          <div class="stat-value">${{ salarioMax | number }}</div>
+        </div>
+      </div>
+
+      <div class="stat-card card-orange">
+        <div class="stat-icon">📉</div>
+        <div class="stat-info">
+          <div class="stat-label">Salario Mínimo</div>
+          <div class="stat-value">${{ salarioMin | number }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gráficos -->
+    <div class="charts-grid">
+      <!-- Gráfico de empleados por departamento -->
+      <div class="chart-container">
+        <h3>Empleados por Departamento</h3>
+        <canvas 
+          *ngIf="chartDepartamentos"
+          baseChart 
+          [data]="chartDepartamentos.data"
+          [options]="chartDepartamentos.options"
+          [type]="chartDepartamentos.type"
+        ></canvas>
+      </div>
+
+      <!-- Gráfico de salarios por departamento -->
+      <div class="chart-container">
+        <h3>Salario Promedio por Departamento</h3>
+        <canvas 
+          *ngIf="chartSalarios"
+          baseChart 
+          [data]="chartSalarios.data"
+          [options]="chartSalarios.options"
+          [type]="chartSalarios.type"
+        ></canvas>
+      </div>
+
+      <!-- Gráfico de estados -->
+      <div class="chart-container">
+        <h3>Estado de Empleados</h3>
+        <canvas 
+          *ngIf="chartEstados"
+          baseChart 
+          [data]="chartEstados.data"
+          [options]="chartEstados.options"
+          [type]="chartEstados.type"
+        ></canvas>
+      </div>
+
+      <!-- Gráfico de tendencia -->
+      <div class="chart-container full-width">
+        <h3>Tendencia de Salario Promedio</h3>
+        <canvas 
+          *ngIf="chartTendencia"
+          baseChart 
+          [data]="chartTendencia.data"
+          [options]="chartTendencia.options"
+          [type]="chartTendencia.type"
+        ></canvas>
+      </div>
+    </div>
+
+    <!-- Tabla de empleados por estado -->
+    <div class="estados-section">
+      <h3>Resumen por Estado</h3>
+      <div class="estados-grid">
+        <div class="estado-card activo">
+          <div class="estado-label">Activos</div>
+          <div class="estado-count">{{ obtenerEmpleadosPorEstado('activo') }}</div>
+        </div>
+        <div class="estado-card inactivo">
+          <div class="estado-label">Inactivos</div>
+          <div class="estado-count">{{ obtenerEmpleadosPorEstado('inactivo') }}</div>
+        </div>
+        <div class="estado-card licencia">
+          <div class="estado-label">En Licencia</div>
+          <div class="estado-count">{{ obtenerEmpleadosPorEstado('licencia') }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && empleados.length === 0" class="alert alert-info">
+    <p>No hay datos para mostrar</p>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+<div class="home-container">
+  <div class="welcome-section">
+    <h1>🚀 Bienvenido a ANGULAR_DEFINITIVO</h1>
+    <p class="subtitle">Sistema integral de gestión de empresa y empleados</p>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <p>Cargando información...</p>
+  </div>
+
+  <div *ngIf="!loading && empresa" class="info-cards">
+    <!-- Card Empresa -->
+    <div class="card">
+      <div class="card-icon">🏢</div>
+      <h3>Información de la Empresa</h3>
+      <p><strong>{{ empresa.nombre }}</strong></p>
+      <p>{{ empresa.ciudad }}, {{ empresa.pais }}</p>
+      <a routerLink="/empresa" class="card-link">Ver Detalles →</a>
+    </div>
+
+    <!-- Card Empleados -->
+    <div class="card">
+      <div class="card-icon">👥</div>
+      <h3>Gestión de Empleados</h3>
+      <p class="big-number">{{ totalEmpleados }}</p>
+      <p>Empleados registrados</p>
+      <a routerLink="/empleados" class="card-link">Ver Listado →</a>
+    </div>
+
+    <!-- Card Estadísticas -->
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>Estadísticas</h3>
+      <p>Análisis y gráficos</p>
+      <p>de empleados</p>
+      <a routerLink="/estadisticas" class="card-link">Ver Gráficos →</a>
+    </div>
+
+    <!-- Card Mapa -->
+    <div class="card">
+      <div class="card-icon">🗺️</div>
+      <h3>Ubicaciones</h3>
+      <p>Oficinas en</p>
+      <p>{{ empresa.pais }}</p>
+      <a routerLink="/mapa" class="card-link">Ver Mapa →</a>
+    </div>
+
+    <!-- Card Reportes -->
+    <div class="card">
+      <div class="card-icon">📄</div>
+      <h3>Reportes</h3>
+      <p>Exportar a PDF</p>
+      <p>o Excel</p>
+      <a routerLink="/reportes" class="card-link">Generar Reporte →</a>
+    </div>
+
+    <!-- Card Agregar -->
+    <div class="card">
+      <div class="card-icon">➕</div>
+      <h3>Nuevo Empleado</h3>
+      <p>Agregar empleado</p>
+      <p>a la empresa</p>
+      <a routerLink="/empleados/nuevo" class="card-link">Crear Empleado →</a>
+    </div>
+  </div>
+
+  <div class="features-section">
+    <h2>✨ Características Principales</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <span class="feature-icon">📋</span>
+        <h4>Gestión Completa</h4>
+        <p>CRUD completo de empleados y empresas</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">📊</span>
+        <h4>Estadísticas</h4>
+        <p>Gráficos interactivos con Chart.js</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🗺️</span>
+        <h4>Mapas</h4>
+        <p>Ubicación de oficinas en Canadá con Leaflet</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">📄</span>
+        <h4>Reportes</h4>
+        <p>Exportar a PDF y Excel</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🔍</span>
+        <h4>Filtros</h4>
+        <p>Búsqueda y filtrado de datos</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">📱</span>
+        <h4>Responsivo</h4>
+        <p>Funciona en desktop, tablet y móvil</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tech-stack">
+    <h2>🛠️ Stack Tecnológico</h2>
+    <div class="tech-list">
+      <span class="tech-badge">Angular 18+</span>
+      <span class="tech-badge">TypeScript</span>
+      <span class="tech-badge">RxJS</span>
+      <span class="tech-badge">Chart.js</span>
+      <span class="tech-badge">Leaflet</span>
+      <span class="tech-badge">jsPDF</span>
+      <span class="tech-badge">XLSX</span>
+      <span class="tech-badge">json-server</span>
+    </div>
+  </div>
+</div>

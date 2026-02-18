@@ -1,0 +1,91 @@
+<div class="mapa-container">
+  <div class="header">
+    <h2>🗺️ Ubicación de Oficinas</h2>
+    <p *ngIf="empresa" class="empresa-info">{{ empresa.nombre }} - Ubicaciones</p>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div *ngIf="loading" class="loading">
+    <p>Cargando mapa...</p>
+  </div>
+
+  <div *ngIf="!loading" class="mapa-content">
+    <!-- Controles -->
+    <div class="controles">
+      <div class="pais-selector">
+        <label for="pais">Seleccionar País/Ciudad:</label>
+        <select 
+          id="pais"
+          [(ngModel)]="paisSeleccionado"
+          (change)="cambiarPais()"
+          class="form-control"
+        >
+          <option *ngFor="let pais of paises" [value]="pais">
+            {{ pais }}
+          </option>
+        </select>
+      </div>
+      <div class="info-pais">
+        <p><strong>Mostrando:</strong> {{ obtenerPaisActual() }}</p>
+      </div>
+    </div>
+
+    <!-- Mapa -->
+    <div class="mapa-wrapper">
+      <div #mapContainer class="mapa" id="mapa"></div>
+    </div>
+
+    <!-- Lista de ubicaciones -->
+    <div class="ubicaciones-section">
+      <h3>📍 Ubicaciones en {{ obtenerPaisActual() }}</h3>
+      
+      <div *ngIf="obtenerUbicacionesPorPais().length > 0" class="ubicaciones-grid">
+        <div *ngFor="let ubicacion of obtenerUbicacionesPorPais()" class="ubicacion-card">
+          <div class="ubicacion-header">
+            <h4>{{ ubicacion.nombre }}</h4>
+            <span [ngClass]="ubicacion.activa ? 'badge-activa' : 'badge-inactiva'">
+              {{ ubicacion.activa ? '✓ Activa' : '✗ Inactiva' }}
+            </span>
+          </div>
+          
+          <div class="ubicacion-info">
+            <p><strong>Tipo:</strong> 
+              <span class="tipo-badge" [ngClass]="'tipo-' + ubicacion.tipo">
+                {{ ubicacion.tipo }}
+              </span>
+            </p>
+            <p><strong>Ciudad:</strong> {{ ubicacion.ciudad }}</p>
+            <p><strong>País:</strong> {{ ubicacion.pais }}</p>
+            <p><strong>Coordenadas:</strong> 
+              <code>{{ ubicacion.latitud }}, {{ ubicacion.longitud }}</code>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="obtenerUbicacionesPorPais().length === 0" class="no-ubicaciones">
+        <p>No hay ubicaciones disponibles para este país</p>
+      </div>
+    </div>
+
+    <!-- Leyenda -->
+    <div class="leyenda-section">
+      <h3>Leyenda</h3>
+      <div class="leyenda-grid">
+        <div class="leyenda-item">
+          <span class="leyenda-icon" style="color: #007bff;">🏢</span>
+          <span>Oficina</span>
+        </div>
+        <div class="leyenda-item">
+          <span class="leyenda-icon" style="color: #6c757d;">🏭</span>
+          <span>Almacén</span>
+        </div>
+        <div class="leyenda-item">
+          <span class="leyenda-icon" style="color: #28a745;">🚛</span>
+          <span>Centro de Distribución</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
