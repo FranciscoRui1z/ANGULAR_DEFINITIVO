@@ -135,19 +135,6 @@
       "empresaId": 1
     },
     {
-      "id": 9,
-      "nombre": "Pepe",
-      "apellido": "Gutierrez",
-      "email": "pepe@pepe.com",
-      "telefono": "",
-      "departamento": "Desarrollo",
-      "puesto": "Administrador De Sistemas",
-      "salario": 10000,
-      "fechaContratacion": "2026-02-18",
-      "estado": "activo",
-      "empresaId": 1
-    },
-    {
       "id": 10,
       "nombre": "Miguel",
       "apellido": "Sánchez",

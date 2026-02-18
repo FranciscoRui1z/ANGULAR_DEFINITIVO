@@ -138,6 +138,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
             backgroundColor: [
               '#667eea',
               '#764ba2',
+              '#607eaa',
               '#f093fb',
               '#4facfe',
               '#00f2fe',
@@ -146,6 +147,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
             borderColor: [
               '#667eea',
               '#764ba2',
+              '#607eaa',
               '#f093fb',
               '#4facfe',
               '#00f2fe',
@@ -198,6 +200,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
             //Colores para cada sección de la rosca
             backgroundColor: [
               '#667eea',
+              '#607eaa',
               '#764ba2',
               '#f093fb',
               '#4facfe',
